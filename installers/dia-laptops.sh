@@ -52,8 +52,9 @@ sudo apt update && sudo apt install -y locales
 sudo locale-gen en_GB en_GB.UTF-8
 sudo update-locale LC_ALL=en_GB.UTF-8 LANG=en_GB.UTF-8
 
-# Enable multicast on loopback (via a startup service)
-sudo cp ${SHARE_DIR}/repos/tuos_robotics/laptops/startup_service/multicast-lo.service /etc/systemd/system/
+# Enable multicast on loopback (via a startup service) 
+sudo wget -O /etc/systemd/system/multicast-lo.service \
+    https://raw.githubusercontent.com/tom-howard/tuos_robotics/refs/heads/humble/laptops/startup_service/multicast-lo.service
 sudo systemctl enable multicast-lo.service
 
 echo -e "\n### Connecting to DIA-LAB SSID ###\n"
