@@ -1,0 +1,26 @@
+services:
+  ros_dev_env:
+    container_name: ros2-waffle
+    image: ros2-waffle
+    build: ./
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - type: bind
+        source: ${ROS_PROJECT_PATH}
+        target: /home/student/ros2_ws/src
+      - type: bind
+        source: ${HOME}/.ssh
+        target: /home/student/.ssh
+      - ros2_workspace:/home/student/ros2_ws
+    environment:
+      - DISPLAY=$DISPLAY
+    networks:
+      - x11
+    stdin_open: true
+    tty: true
+    privileged: true
+networks:
+  x11:
+
+volumes:
+  ros2_workspace:
