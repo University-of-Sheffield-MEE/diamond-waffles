@@ -19,7 +19,7 @@ stop() {
 
 term() {
     echo "Launching the ROS2 environment, type 'exit' to leave once you're done."
-    docker exec -it ros2 /bin/bash
+    docker exec -it ros2-waffle /bin/bash
 }
 
 case $COMMAND in 
